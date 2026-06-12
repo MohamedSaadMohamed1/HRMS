@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen SaaS HRMS Portal - Persistent Database Edition</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Gradients -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="app-container">
+        <!-- TOPBAR -->
+        <header class="topbar glass">
+            <div class="brand">
+                <div class="logo-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="brand-text">
+                    <h1>Antigravity HRMS</h1>
+                    <span class="badge" style="color:var(--teal); background:rgba(20, 184, 166, 0.1);">SQLite Database Connected</span>
+                </div>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="topbar-controls">
+                <!-- Tenant Switcher -->
+                <div class="control-group">
+                    <label for="tenant-select"><i class="fa-solid fa-building"></i> <span data-i18n="tenant">Tenant</span></label>
+                    <select id="tenant-select" class="glass-select">
+                        <option value="tenant_a" selected>GlobalTech Solutions</option>
+                        <option value="tenant_b">Arabian Retail Group (مجموعة التجزئة العربية)</option>
+                    </select>
+                </div>
+
+                <!-- RBAC Switcher -->
+                <div class="control-group">
+                    <label for="role-select"><i class="fa-solid fa-user-shield"></i> <span data-i18n="role">Role</span></label>
+                    <select id="role-select" class="glass-select">
+                        <option value="Owner" selected>Owner / Admin</option>
+                        <option value="HR Manager">HR Manager</option>
+                        <option value="Employee">Employee (ESS)</option>
+                    </select>
+                </div>
+
+                <!-- Language Toggle -->
+                <button id="lang-toggle" class="btn glass" title="Switch Language">
+                    <i class="fa-solid fa-language"></i>
+                    <span id="lang-label">عربي</span>
+                </button>
+
+                <!-- Notifications -->
+                <div class="notification-wrapper">
+                    <button class="btn btn-icon glass" id="noti-btn">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="noti-badge">3</span>
+                    </button>
+                    <div class="noti-dropdown glass hidden" id="noti-dropdown">
+                        <div class="noti-header">
+                            <h3 data-i18n="notifications">Notifications</h3>
+                            <button id="mark-read-btn" class="btn btn-text">Clear</button>
+                        </div>
+                        <div class="noti-list" id="noti-list">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Widget -->
+                <div class="profile-widget">
+                    <img id="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Avatar" class="avatar">
+                    <div class="profile-info">
+                        <h4 id="user-name">Sarah Connor</h4>
+                        <span id="user-role-label">System Owner</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- SIDEBAR -->
+            <aside class="sidebar glass">
+                <nav class="sidebar-menu">
+                    <a href="#dashboard" class="menu-item active" data-tab="dashboard">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span data-i18n="menu_dashboard">Dashboard</span>
+                    </a>
+                    <a href="#org-structure" class="menu-item" data-tab="org-structure">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <span data-i18n="menu_org">Org Chart</span>
+                    </a>
+                    <a href="#employees" class="menu-item" data-tab="employees">
+                        <i class="fa-solid fa-users"></i>
+                        <span data-i18n="menu_employees">Employee Files</span>
+                    </a>
+                    <a href="#recruitment" class="menu-item" data-tab="recruitment">
+                        <i class="fa-solid fa-id-card-clip"></i>
+                        <span data-i18n="menu_recruitment">ATS Recruitment</span>
+                    </a>
+                    <a href="#onboarding" class="menu-item" data-tab="onboarding">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span data-i18n="menu_onboarding">Onboarding</span>
+                    </a>
+                    <a href="#attendance" class="menu-item" data-tab="attendance">
+                        <i class="fa-solid fa-business-time"></i>
+                        <span data-i18n="menu_attendance">Attendance & Leaves</span>
+                    </a>
+                    <a href="#payroll" class="menu-item" data-tab="payroll">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <span data-i18n="menu_payroll">Payroll & Claims</span>
+                    </a>
+                    <a href="#workflows" class="menu-item" data-tab="workflows">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        <span data-i18n="menu_workflows">Workflow Engine</span>
+                    </a>
+                    <a href="#ai-assistant" class="menu-item" data-tab="ai-assistant">
+                        <i class="fa-solid fa-robot"></i>
+                        <span data-i18n="menu_ai">AI Workspace</span>
+                    </a>
+                </nav>
+                <div class="sidebar-footer">
+                    <div class="system-status">
+                        <div class="status-indicator online"></div>
+                        <span>SQL DB Active</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CONTENT AREA -->
+            <main class="content-view">
+
+                <!-- 1. DASHBOARD VIEW -->
+                <section id="dashboard" class="tab-panel active">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="dash_title">Executive Dashboard</h2>
+                            <p data-i18n="dash_subtitle">Real-time metrics and SQL workforce distributions</p>
+                        </div>
+                        <div class="date-badge glass">
+                            <i class="fa-regular fa-calendar-days"></i>
+                            <span id="current-date">June 10, 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Metrics Grid -->
+                    <div class="metrics-grid">
+                        <div class="metric-card glass glow-violet">
+                            <div class="metric-header">
+                                <span data-i18n="metric_headcount">Total Headcount</span>
+                                <div class="metric-icon bg-violet"><i class="fa-solid fa-users-viewfinder"></i></div>
+                            </div>
+                            <div class="metric-body">
+                                <h3 id="metric-total-count">0</h3>
+                                <span class="metric-change positive"><i class="fa-solid fa-arrow-trend-up"></i> +4.2% <span data-i18n="vs_last_month">vs last month</span></span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass glow-teal">
+                            <div class="metric-header">
+                                <span data-i18n="metric_attendance">Attendance Rate</span>
+                                <div class="metric-icon bg-teal"><i class="fa-solid fa-user-check"></i></div>
+                            </div>
+                            <div class="metric-body">
+                                <h3 id="metric-attendance-rate">96.8%</h3>
+                                <span class="metric-change positive"><i class="fa-solid fa-arrow-trend-up"></i> +1.1% <span data-i18n="today">today</span></span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass glow-amber">
+                            <div class="metric-header">
+                                <span data-i18n="metric_open_jobs">Active Job Openings</span>
+                                <div class="metric-icon bg-amber"><i class="fa-solid fa-bullhorn"></i></div>
+                            </div>
+                            <div class="metric-body">
+                                <h3 id="metric-active-jobs">0</h3>
+                                <span class="metric-change neutral"><i class="fa-solid fa-arrow-right"></i> Stable <span data-i18n="vs_last_month">vs last month</span></span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass glow-red">
+                            <div class="metric-header">
+                                <span data-i18n="metric_monthly_payroll">Monthly Net Payroll</span>
+                                <div class="metric-icon bg-red"><i class="fa-solid fa-wallet"></i></div>
+                            </div>
+                            <div class="metric-body">
+                                <h3 id="metric-payroll-cost">$0</h3>
+                                <span class="metric-change negative"><i class="fa-solid fa-arrow-trend-up"></i> +2.3% <span data-i18n="inc_allowances">inc. allowances</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts & Lists -->
+                    <div class="dashboard-grid">
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="chart_headcount_dept">Headcount by Department</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="bar-chart-container" id="dept-chart"></div>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="hiring_pipeline_stats">Recruitment Conversion Funnel</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="funnel-container" id="funnel-chart"></div>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2">
+                            <div class="card-header">
+                                <h3 data-i18n="recent_activities">Recent System Actions</h3>
+                                <span class="badge badge-outline">Live Logs</span>
+                            </div>
+                            <div class="card-body">
+                                <ul class="activity-list" id="activity-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. ORG STRUCTURE VIEW -->
+                <section id="org-structure" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="org_title">Interactive Organizational Structure</h2>
+                            <p data-i18n="org_subtitle">Explore corporate hierarchies, report structures, and departments</p>
+                        </div>
+                        <button class="btn btn-primary" id="add-node-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="add_position">Add Position</span></button>
+                    </div>
+
+                    <div class="org-chart-wrapper glass">
+                        <div class="org-controls">
+                            <button class="btn btn-secondary" id="zoom-in-org"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                            <button class="btn btn-secondary" id="zoom-out-org"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                            <button class="btn btn-secondary" id="reset-org"><i class="fa-solid fa-arrows-to-eye"></i></button>
+                        </div>
+                        <div class="org-canvas" id="org-canvas"></div>
+                    </div>
+                </section>
+
+                <!-- 3. EMPLOYEE MANAGEMENT VIEW -->
+                <section id="employees" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="emp_title">Employee Files Directory</h2>
+                            <p data-i18n="emp_subtitle">Add, manage, track status, and view detailed records of staff members</p>
+                        </div>
+                        <button class="btn btn-primary" id="add-emp-btn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="add_employee">Add Employee</span></button>
+                    </div>
+
+                    <div class="filters-bar glass">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="emp-search" placeholder="Search employees name, position, email..." data-i18n-placeholder="search_emp_placeholder">
+                        </div>
+                        <div class="filter-options">
+                            <select id="emp-status-filter" class="glass-select">
+                                <option value="All" data-i18n="status_all">All Statuses</option>
+                                <option value="Active" data-i18n="status_active">Active</option>
+                                <option value="Onboarding" data-i18n="status_onboarding">Onboarding</option>
+                                <option value="Suspended" data-i18n="status_suspended">Suspended</option>
+                                <option value="Resigned" data-i18n="status_resigned">Resigned</option>
+                            </select>
+                            <select id="emp-dept-filter" class="glass-select">
+                                <option value="All" data-i18n="dept_all">All Departments</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Directory Table -->
+                    <div class="directory-container">
+                        <div class="glass-table-wrapper">
+                            <table class="glass-table">
+                                <thead>
+                                    <tr>
+                                        <th data-i18n="tbl_emp">Employee</th>
+                                        <th data-i18n="tbl_id">ID</th>
+                                        <th data-i18n="tbl_dept">Department</th>
+                                        <th data-i18n="tbl_position">Position</th>
+                                        <th data-i18n="tbl_status">Lifecycle State</th>
+                                        <th data-i18n="tbl_actions">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="employee-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. RECRUITMENT ATS VIEW -->
+                <section id="recruitment" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="ats_title">ATS Recruitment Pipeline</h2>
+                            <p data-i18n="ats_subtitle">Manage applicants, run parsing models, score fits, and execute hiring workflows</p>
+                        </div>
+                        <button class="btn btn-primary" id="add-candidate-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="new_candidate">Add Candidate</span></button>
+                    </div>
+
+                    <!-- Kanban Board -->
+                    <div class="ats-board-wrapper">
+                        <div class="ats-column glass" data-step="Applied">
+                            <div class="column-header">
+                                <span class="col-title" data-i18n="step_applied">Applied</span>
+                                <span class="badge col-count">0</span>
+                            </div>
+                            <div class="column-cards" id="col-applied"></div>
+                        </div>
+
+                        <div class="ats-column glass" data-step="Screening">
+                            <div class="column-header">
+                                <span class="col-title" data-i18n="step_screening">Screening</span>
+                                <span class="badge col-count">0</span>
+                            </div>
+                            <div class="column-cards" id="col-screening"></div>
+                        </div>
+
+                        <div class="ats-column glass" data-step="Interview">
+                            <div class="column-header">
+                                <span class="col-title" data-i18n="step_interview">Interview</span>
+                                <span class="badge col-count">0</span>
+                            </div>
+                            <div class="column-cards" id="col-interview"></div>
+                        </div>
+
+                        <div class="ats-column glass" data-step="Offer">
+                            <div class="column-header">
+                                <span class="col-title" data-i18n="step_offer">Offer</span>
+                                <span class="badge col-count">0</span>
+                            </div>
+                            <div class="column-cards" id="col-offer"></div>
+                        </div>
+
+                        <div class="ats-column glass" data-step="Hired">
+                            <div class="column-header">
+                                <span class="col-title" data-i18n="step_hired">Hired / Closed</span>
+                                <span class="badge col-count">0</span>
+                            </div>
+                            <div class="column-cards" id="col-hired"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. ONBOARDING HUB -->
+                <section id="onboarding" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="onboard_title">Employee Onboarding Hub</h2>
+                            <p data-i18n="onboard_subtitle">Track pre-boarding checkouts, account setups, IT gear, and policy signatures</p>
+                        </div>
+                    </div>
+
+                    <div class="onboarding-grid">
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="active_onboardees">Active Onboardees</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="onboardee-list" id="onboardee-list"></div>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2" id="onboarding-detail-card">
+                            <div class="card-header border-bottom">
+                                <div class="onboardee-profile-header">
+                                    <h3 id="onboardee-name">Select an Employee</h3>
+                                    <span class="badge badge-teal" id="onboardee-progress">0% Done</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="progress-bar-outer">
+                                    <div class="progress-bar-inner bg-teal" style="width: 0%;" id="onboardee-progress-bar"></div>
+                                </div>
+
+                                <div class="checklist-sections">
+                                    <div class="checklist-category">
+                                        <h4><i class="fa-solid fa-laptop-code"></i> IT Provisioning Checklist</h4>
+                                        <ul class="checklist-items" id="it-checklist-list"></ul>
+                                    </div>
+
+                                    <div class="checklist-category">
+                                        <h4><i class="fa-solid fa-file-signature"></i> Human Resources Setup</h4>
+                                        <ul class="checklist-items" id="hr-checklist-list"></ul>
+                                    </div>
+
+                                    <div class="checklist-category">
+                                        <h4><i class="fa-solid fa-briefcase"></i> Hiring Manager Onboarding</h4>
+                                        <ul class="checklist-items" id="manager-checklist-list"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. ATTENDANCE & LEAVES VIEW -->
+                <section id="attendance" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="attendance_title">Attendance & Leave Center</h2>
+                            <p data-i18n="attendance_subtitle">Clock in/out with GPS checks, view logs, and request leave approvals</p>
+                        </div>
+                    </div>
+
+                    <div class="attendance-grid">
+                        <div class="card glass glow-violet text-center">
+                            <div class="card-header">
+                                <h3 data-i18n="clock_widget_title">Biometric Web Check-In</h3>
+                            </div>
+                            <div class="card-body clock-body">
+                                <div class="digital-clock" id="digital-clock">15:30:22</div>
+                                <button class="btn btn-primary btn-large" id="punch-btn"><i class="fa-solid fa-sign-in-alt"></i> <span data-i18n="punch_in">Clock In</span></button>
+                                <div class="gps-coordinate-badge" id="gps-coords">
+                                    <i class="fa-solid fa-location-crosshairs"></i> Lat: 24.7136, Long: 46.6753 ( Riyadh HQ )
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="leave_balances">Your Leave Balances</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="balance-grid">
+                                    <div class="balance-item">
+                                        <span data-i18n="bal_annual">Annual Leave</span>
+                                        <strong id="bal-annual-days">21 / 30 Days</strong>
+                                    </div>
+                                    <div class="balance-item">
+                                        <span data-i18n="bal_sick">Sick Leave</span>
+                                        <strong id="bal-sick-days">12 / 15 Days</strong>
+                                    </div>
+                                    <div class="balance-item">
+                                        <span data-i18n="bal_emergency">Emergency Leave</span>
+                                        <strong id="bal-emergency-days">5 / 5 Days</strong>
+                                    </div>
+                                </div>
+                                <button class="btn btn-secondary w-full" id="request-leave-btn"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="request_leave_btn_txt">Submit Leave Request</span></button>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2">
+                            <div class="card-header">
+                                <h3 data-i18n="leave_history">Leave Request Workflow History</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_requester">Employee</th>
+                                                <th data-i18n="tbl_leave_type">Leave Type</th>
+                                                <th data-i18n="tbl_leave_dates">Dates</th>
+                                                <th data-i18n="tbl_days">Days</th>
+                                                <th data-i18n="tbl_workflow_status">Approval Workflow Status</th>
+                                                <th data-i18n="tbl_actions">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="leave-requests-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. PAYROLL & CLAIMS -->
+                <section id="payroll" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="payroll_title">Payroll Processing & Expense Claims</h2>
+                            <p data-i18n="payroll_subtitle">Calculate earnings, deductions, net salaries, and process expense reimbursements</p>
+                        </div>
+                    </div>
+
+                    <div class="payroll-grid">
+                        <div class="card glass glow-teal">
+                            <div class="card-header">
+                                <h3 data-i18n="payslip_preview">Payslip Calculator / Preview</h3>
+                                <span class="badge" id="payslip-month">June 2026</span>
+                            </div>
+                            <div class="card-body" id="payslip-calculator-body"></div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="claim_expense_title">Submit Expense Claim</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="expense-form" class="glass-form">
+                                    <div class="form-group">
+                                        <label for="expense-amount" data-i18n="claim_amount">Amount</label>
+                                        <input type="number" id="expense-amount" placeholder="0.00" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="expense-category" data-i18n="claim_category">Category</label>
+                                        <select id="expense-category" class="glass-select">
+                                            <option value="Travel" data-i18n="cat_travel">Travel / Hotel</option>
+                                            <option value="Meals" data-i18n="cat_meals">Meals</option>
+                                            <option value="Fuel" data-i18n="cat_fuel">Fuel / Transport</option>
+                                            <option value="Office" data-i18n="cat_office">Office Gear</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="expense-notes" data-i18n="claim_description">Description / Reason</label>
+                                        <textarea id="expense-notes" placeholder="Trip to Riyadh for presentation..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-full"><i class="fa-solid fa-cloud-arrow-up"></i> <span data-i18n="submit_claim">Submit Expense Claim</span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2">
+                            <div class="card-header">
+                                <h3 data-i18n="active_claims">Active Expense Claims</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_claimant">Claimant</th>
+                                                <th data-i18n="tbl_claim_cat">Category</th>
+                                                <th data-i18n="tbl_claim_amt">Amount</th>
+                                                <th data-i18n="tbl_claim_desc">Description</th>
+                                                <th data-i18n="tbl_claim_status">Status</th>
+                                                <th data-i18n="tbl_actions">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="expense-claims-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. WORKFLOW ENGINE -->
+                <section id="workflows" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="wf_title">No-Code Approval Workflow Engine</h2>
+                            <p data-i18n="wf_subtitle">Design, connect, and deploy automated approval sequences for standard actions</p>
+                        </div>
+                        <button class="btn btn-primary" id="save-workflow-btn"><i class="fa-solid fa-save"></i> <span data-i18n="deploy_workflow">Deploy Workflow</span></button>
+                    </div>
+
+                    <div class="workflow-builder-wrapper">
+                        <div class="workflow-toolbox glass">
+                            <h4 data-i18n="wf_triggers_title">1. Choose Triggers</h4>
+                            <div class="toolbox-item" draggable="true" data-type="trigger" data-action="Leave Request"><i class="fa-solid fa-calendar-minus icon-orange"></i> Leave Request</div>
+                            <div class="toolbox-item" draggable="true" data-type="trigger" data-action="Expense Claim"><i class="fa-solid fa-money-bill-wave icon-teal"></i> Expense Claim</div>
+                            <div class="toolbox-item" draggable="true" data-type="trigger" data-action="New Hire"><i class="fa-solid fa-user-plus icon-indigo"></i> New Hiring Request</div>
+
+                            <h4 data-i18n="wf_actions_title">2. Add Action Node</h4>
+                            <div class="toolbox-item" draggable="true" data-type="action" data-action="Manager Approval"><i class="fa-solid fa-user-check icon-green"></i> Manager Approval</div>
+                            <div class="toolbox-item" draggable="true" data-type="action" data-action="HR Director Approval"><i class="fa-solid fa-user-shield icon-purple"></i> HR Director Approval</div>
+                            <div class="toolbox-item" draggable="true" data-type="action" data-action="CEO Signoff"><i class="fa-solid fa-user-tie icon-red"></i> CEO Signoff</div>
+                            <div class="toolbox-item" draggable="true" data-type="action" data-action="Send Email Notification"><i class="fa-solid fa-envelope icon-blue"></i> Email Notification</div>
+                        </div>
+
+                        <div class="workflow-canvas-outer glass">
+                            <div class="canvas-header">
+                                <span class="badge" data-i18n="wf_canvas_help">Click cards in the toolbox to chain approval nodes sequentially</span>
+                                <button id="clear-workflow" class="btn btn-text btn-small"><i class="fa-solid fa-trash-can"></i> Clear Canvas</button>
+                            </div>
+                            <div class="workflow-canvas" id="workflow-canvas"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. AI ASSISTANT -->
+                <section id="ai-assistant" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="ai_title">AI Workforce Copilot Workspace</h2>
+                            <p data-i18n="ai_subtitle">Retrieve data, print payslips, search policy, and evaluate flight risks with natural language</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-container">
+                        <div class="ai-side-panel glass">
+                            <h4 data-i18n="ai_capabilities">Capabilities & Tools</h4>
+                            <ul class="ai-tool-list">
+                                <li><i class="fa-solid fa-shield-halved text-teal"></i> <strong data-i18n="ai_policy_search">Policy Q&A</strong>: Searches employee bylaws.</li>
+                                <li><i class="fa-solid fa-calculator text-violet"></i> <strong data-i18n="ai_payslip_calculator">Salary Calculation</strong>: Draft payslips instantly.</li>
+                                <li><i class="fa-solid fa-triangle-exclamation text-amber"></i> <strong data-i18n="ai_flight_risk">Predictive Flight Risk</strong>: Flags employee exit probability.</li>
+                                <li><i class="fa-solid fa-file-signature text-blue"></i> <strong data-i18n="ai_resume_scoring">Resume Assessment</strong>: Ranks PDF resumes.</li>
+                            </ul>
+
+                            <div class="divider"></div>
+
+                            <h4 data-i18n="predictive_exit_alerts">Predictive Attrition Risk</h4>
+                            <div class="at-risk-list" id="at-risk-list"></div>
+                        </div>
+
+                        <div class="ai-chat-interface glass glow-indigo">
+                            <div class="chat-header">
+                                <div class="ai-avatar"><i class="fa-solid fa-robot"></i></div>
+                                <div>
+                                    <h3>Antigravity HR Copilot</h3>
+                                    <span class="status-indicator online"></span> <small data-i18n="online_active">Online & active (SQLite Database Link)</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-messages" id="chat-messages"></div>
+
+                            <div class="suggestion-chips" id="suggestion-chips">
+                                <button class="chip" data-query="كم رصيد إجازاتي؟">كم رصيد إجازاتي؟</button>
+                                <button class="chip" data-query="احسب مرتب الموظف ديفيد">احسب مرتب ديفيد</button>
+                                <button class="chip" data-query="Show me the organization hierarchy">Show Organization Hierarchy</button>
+                                <button class="chip" data-query="Analyze exit risk index">Analyze Exit Risk Index</button>
+                            </div>
+
+                            <div class="chat-input-wrapper">
+                                <input type="text" id="chat-input" placeholder="Ask AI assistant a question..." data-i18n-placeholder="chat_input_placeholder">
+                                <button class="btn btn-primary" id="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL: DETAILS -->
+    <div class="modal-backdrop hidden" id="emp-modal">
+        <div class="modal-card glass">
+            <div class="modal-header">
+                <h3 id="modal-emp-title">Employee Details File</h3>
+                <button class="btn btn-icon btn-text close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-profile-header">
+                    <img id="modal-emp-avatar" src="" alt="Avatar" class="avatar-large">
+                    <div>
+                        <h2 id="modal-emp-fullname">Jane Doe</h2>
+                        <span id="modal-emp-sub" class="text-teal">IT Specialist</span>
+                    </div>
+                </div>
+
+                <div class="modal-tabs">
+                    <button class="modal-tab-btn active" data-modal-tab="modal-personal">Personal Details</button>
+                    <button class="modal-tab-btn" data-modal-tab="modal-financial">Financial & Compensation</button>
+                    <button class="modal-tab-btn" data-modal-tab="modal-attachments">Attachments / Expiries</button>
+                </div>
+
+                <div class="modal-tab-panel active" id="modal-personal">
+                    <div class="details-grid">
+                        <div class="detail-item"><label>Full Name</label><span id="det-name"></span></div>
+                        <div class="detail-item"><label>Nationality</label><span id="det-nat"></span></div>
+                        <div class="detail-item"><label>National ID / Iqama</label><span id="det-nationalid"></span></div>
+                        <div class="detail-item"><label>Email</label><span id="det-email"></span></div>
+                        <div class="detail-item"><label>Phone</label><span id="det-phone"></span></div>
+                        <div class="detail-item"><label>Hire Date</label><span id="det-hiredate"></span></div>
+                    </div>
+                </div>
+
+                <div class="modal-tab-panel" id="modal-financial">
+                    <div class="details-grid">
+                        <div class="detail-item"><label>Base Salary</label><span id="det-sal-base"></span></div>
+                        <div class="detail-item"><label>Housing Allowance</label><span id="det-sal-house"></span></div>
+                        <div class="detail-item"><label>Transport Allowance</label><span id="det-sal-trans"></span></div>
+                        <div class="detail-item"><label>Bank Name</label><span id="det-bank"></span></div>
+                        <div class="detail-item"><label>IBAN Number</label><span id="det-iban"></span></div>
+                    </div>
+                </div>
+
+                <div class="modal-tab-panel" id="modal-attachments">
+                    <div class="attachments-list">
+                        <div class="attachment-item">
+                            <div class="attachment-info">
+                                <i class="fa-solid fa-file-pdf icon-red"></i>
+                                <div>
+                                    <strong>Employment Contract.pdf</strong>
+                                    <small>Expires in 280 Days</small>
+                                </div>
+                            </div>
+                            <span class="badge badge-teal">Valid</span>
+                        </div>
+                        <div class="attachment-item">
+                            <div class="attachment-info">
+                                <i class="fa-solid fa-file-pdf icon-red"></i>
+                                <div>
+                                    <strong>National ID - Iqama Copy.pdf</strong>
+                                    <small class="text-orange">Expires in 15 Days</small>
+                                </div>
+                            </div>
+                            <span class="badge badge-orange">Expires Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal" data-i18n="close">Close File</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD EMPLOYEE -->
+    <div class="modal-backdrop hidden" id="add-emp-modal">
+        <div class="modal-card glass">
+            <div class="modal-header">
+                <h3 data-i18n="add_employee">Add New Employee</h3>
+                <button class="btn btn-icon btn-text close-add-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="add-emp-form" class="glass-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emp-first-name" data-i18n="form_fname">First Name</label>
+                            <input type="text" id="emp-first-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-last-name" data-i18n="form_lname">Last Name</label>
+                            <input type="text" id="emp-last-name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emp-email" data-i18n="form_email">Email</label>
+                            <input type="email" id="emp-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-phone" data-i18n="form_phone">Phone</label>
+                            <input type="text" id="emp-phone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emp-dept" data-i18n="form_dept">Department</label>
+                            <select id="emp-dept" class="glass-select">
+                                <option value="Executive">Executive</option>
+                                <option value="HR">Human Resources</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-title" data-i18n="form_job">Job Title</label>
+                            <input type="text" id="emp-title" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emp-salary" data-i18n="form_salary">Base Salary ($)</label>
+                            <input type="number" id="emp-salary" value="5000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-status" data-i18n="form_status">Initial State</label>
+                            <select id="emp-status" class="glass-select">
+                                <option value="Active">Active</option>
+                                <option value="Onboarding">Onboarding</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full mt-4"><i class="fa-solid fa-save"></i> <span data-i18n="save_emp">Save Employee File</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
