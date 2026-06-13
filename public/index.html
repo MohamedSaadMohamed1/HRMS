@@ -125,6 +125,30 @@
                         <i class="fa-solid fa-robot"></i>
                         <span data-i18n="menu_ai">AI Workspace</span>
                     </a>
+                    <a href="#performance" class="menu-item" data-tab="performance">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <span data-i18n="menu_performance">Performance</span>
+                    </a>
+                    <a href="#skills-lms" class="menu-item" data-tab="skills-lms">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span data-i18n="menu_skills_lms">Skills & LMS</span>
+                    </a>
+                    <a href="#benefits-assets" class="menu-item" data-tab="benefits-assets">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span data-i18n="menu_benefits_assets">Benefits & Assets</span>
+                    </a>
+                    <a href="#dms-engagement" class="menu-item" data-tab="dms-engagement">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span data-i18n="menu_dms_surveys">DMS & Surveys</span>
+                    </a>
+                    <a href="#timesheets-projects" class="menu-item" data-tab="timesheets-projects">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span data-i18n="menu_timesheets_projects">Timesheets & Projects</span>
+                    </a>
+                    <a href="#exit-hub" class="menu-item" data-tab="exit-hub">
+                        <i class="fa-solid fa-door-open"></i>
+                        <span data-i18n="menu_exit_hub">Exit Hub</span>
+                    </a>
                 </nav>
                 <div class="sidebar-footer">
                     <div class="system-status">
@@ -626,6 +650,582 @@
                             <div class="chat-input-wrapper">
                                 <input type="text" id="chat-input" placeholder="Ask AI assistant a question..." data-i18n-placeholder="chat_input_placeholder">
                                 <button class="btn btn-primary" id="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                </section>
+
+                <!-- 10. PERFORMANCE VIEW -->
+                <section id="performance" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="perf_title">Performance & OKR Hub</h2>
+                            <p data-i18n="perf_subtitle">Track individual goals, OKRs progress, and analyze talent distributions</p>
+                        </div>
+                    </div>
+                    <div class="performance-grid">
+                        <div class="card glass span-2">
+                            <div class="card-header border-bottom">
+                                <h3 data-i18n="perf_goals_okrs">Goals & OKRs Management</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="add-goal-form" class="glass-form inline-form">
+                                    <div class="form-group">
+                                        <label for="goal-emp-id" data-i18n="lbl_assignee">Assignee</label>
+                                        <select id="goal-emp-id" class="glass-select"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="goal-title" data-i18n="lbl_title">Goal Title</label>
+                                        <input type="text" id="goal-title" placeholder="Complete SOC2 compliance..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="goal-weight" data-i18n="lbl_weight">Weight (0.1 - 1.0)</label>
+                                        <input type="number" step="0.1" id="goal-weight" value="0.3" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="goal-target" data-i18n="lbl_target">Target Value</label>
+                                        <input type="number" id="goal-target" value="100" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> <span data-i18n="btn_add_goal">Add Goal</span></button>
+                                </form>
+                                <div class="divider"></div>
+                                <h4 style="margin: 16px 0 8px 0;" data-i18n="lbl_active_goals">Active Employees Goals</h4>
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_emp">Employee</th>
+                                                <th data-i18n="tbl_goal_title">Goal</th>
+                                                <th data-i18n="tbl_weight">Weight</th>
+                                                <th data-i18n="tbl_progress">Progress</th>
+                                                <th data-i18n="tbl_status">Status</th>
+                                                <th data-i18n="tbl_due">Due Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="goals-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_okr_progress">Active OKR Alignment</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="okrs-progress-list" class="okr-progress-list"></div>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_9box_grid">HR 9-Box Performance Potential Grid</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="nine-box-grid" id="nine-box-container">
+                                    <div class="box-cell bg-red-cell" data-box="A1"><span>Talent Risk (A1)</span><div class="cell-members"></div></div>
+                                    <div class="box-cell bg-orange-cell" data-box="A2"><span>Average Performer (A2)</span><div class="cell-members"></div></div>
+                                    <div class="box-cell bg-green-cell" data-box="A3"><span>High Potential (A3)</span><div class="cell-members"></div></div>
+                                    <div class="box-cell bg-orange-cell" data-box="B1"><span>Inconsistent (B1)</span><div class="cell-members"></div></div>
+                                    <div class="box-cell bg-teal-cell" data-box="B2"><span>Core Employee (B2)</span><div class="cell-members"></div></div>
+                                    <div class="box-cell bg-indigo-cell" data-box="B3"><span>High Performer (B3)</span><div class="cell-members"></div></div>
+                                    <div class="box-cell bg-red-cell" data-box="C1"><span>Underperformer (C1)</span><div class="cell-members"></div></div>
+                                    <div class="box-cell bg-teal-cell" data-box="C2"><span>Solid Professional (C2)</span><div class="cell-members"></div></div>
+                                    <div class="box-cell bg-indigo-cell" data-box="C3"><span>Star Performer (C3)</span><div class="cell-members"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 11. SKILLS & LMS VIEW -->
+                <section id="skills-lms" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="lms_title">Skills & Learning Management Center</h2>
+                            <p data-i18n="lms_subtitle">Evaluate competencies, view courses catalogs, and monitor certification pathways</p>
+                        </div>
+                    </div>
+                    <div class="lms-grid">
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_competency_skills">Skills & Competency Grid</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="log-skill-form" class="glass-form">
+                                    <div class="form-group">
+                                        <label for="skill-emp-select" data-i18n="lbl_employee">Employee</label>
+                                        <select id="skill-emp-select" class="glass-select"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="skill-library-select" data-i18n="lbl_skill">Skill Name</label>
+                                        <select id="skill-library-select" class="glass-select"></select>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="skill-current" data-i18n="lbl_current_level">Current Level (1-5)</label>
+                                            <input type="number" min="1" max="5" id="skill-current" value="3" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="skill-target" data-i18n="lbl_target_level">Target Level (1-5)</label>
+                                            <input type="number" min="1" max="5" id="skill-target" value="4" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group check-row">
+                                        <input type="checkbox" id="skill-certified">
+                                        <label for="skill-certified" data-i18n="lbl_certified">Officially Certified</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-full"><i class="fa-solid fa-save"></i> <span data-i18n="btn_save_skill">Update Skill Level</span></button>
+                                </form>
+                                <div class="divider"></div>
+                                <div id="skills-matrix-results" style="margin-top:16px;"></div>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_lms_courses">Training Catalog & SCORM Courses</h3>
+                                <span class="badge badge-teal" id="courses-count">0 Courses</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="courses-deck" id="courses-deck-container"></div>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-3 hidden" id="scorm-player-card">
+                            <div class="card-header border-bottom">
+                                <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                    <h3 id="scorm-course-title">GDPR Compliance Course</h3>
+                                    <button class="btn btn-secondary btn-small" id="close-scorm-btn"><i class="fa-solid fa-xmark"></i> Exit Course</button>
+                                </div>
+                            </div>
+                            <div class="card-body scorm-content-area">
+                                <div class="mock-video-player">
+                                    <i class="fa-solid fa-circle-play video-play-icon"></i>
+                                    <span>SCORM HTML5 Media Package Stream</span>
+                                    <div class="player-controls">
+                                        <button class="btn btn-primary" id="play-trigger-btn"><i class="fa-solid fa-circle-notch fa-spin hidden" id="player-spin"></i> <span id="player-btn-label">Fast-Forward Progress (10%)</span></button>
+                                        <div class="progress-bar-outer" style="flex:1; margin-left:16px;">
+                                            <div class="progress-bar-inner bg-teal" id="player-progress-bar" style="width:0%;"></div>
+                                        </div>
+                                        <span id="player-percent-label" style="margin-left:12px; font-weight:700;">0%</span>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="exam-panel hidden" id="course-exam-panel">
+                                    <h4 data-i18n="lbl_mandatory_exam">Mandatory Certification Exam</h4>
+                                    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;" data-i18n="lbl_exam_help">Answer the following compliance verification question to earn your badge:</p>
+                                    <div class="form-group">
+                                        <label><strong>Q1: What is the primary directive when data access is requested?</strong></label>
+                                        <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+                                            <label><input type="radio" name="exam-q1" value="correct"> Verify tenant separation rules and database Row-Level Security (RLS) configurations.</label>
+                                            <label><input type="radio" name="exam-q1" value="incorrect"> Grant admin privileges to expedite business operations.</label>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary mt-4" id="submit-exam-btn">Submit Exam & Print Certificate</button>
+                                </div>
+                                <div class="certificate-container hidden" id="certificate-display">
+                                    <div class="cert-card">
+                                        <i class="fa-solid fa-ribbon cert-ribbon"></i>
+                                        <h2 data-i18n="lbl_cert_title">OFFICIAL CERTIFICATE</h2>
+                                        <p>This certifies that the employee has successfully passed the mandatory curriculum for</p>
+                                        <h3 id="cert-course-name">GDPR Compliance Training</h3>
+                                        <span>Issued via Antigravity LMS Engine</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 12. BENEFITS & ASSETS VIEW -->
+                <section id="benefits-assets" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="ben_title">Benefits Enrollments & Assets Tracker</h2>
+                            <p data-i18n="ben_subtitle">Enroll in flexible corporate benefits schemes and assign IT/office equipment</p>
+                        </div>
+                    </div>
+                    <div class="benefits-grid">
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_benefit_plans">Flexible Benefit Plans</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="benefit-claim-form" class="glass-form">
+                                    <div class="form-group">
+                                        <label for="ben-emp-select" data-i18n="lbl_employee">Employee</label>
+                                        <select id="ben-emp-select" class="glass-select" required></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ben-plan-select" data-i18n="lbl_benefit_plan">Select Benefit Plan</label>
+                                        <select id="ben-plan-select" class="glass-select" required></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ben-amount" data-i18n="lbl_claim_amount">Claim Amount ($)</label>
+                                        <input type="number" id="ben-amount" value="150.00" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ben-notes" data-i18n="lbl_notes">Claim Description / Receipt Details</label>
+                                        <textarea id="ben-notes" placeholder="Specify medical prescription or housing reimbursement code..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-full"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="btn_submit_benefit">File Benefit Claim</span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_benefit_claims_history">Active Benefit Claims Log</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_id">Claim ID</th>
+                                                <th data-i18n="tbl_employee">Employee</th>
+                                                <th data-i18n="tbl_plan">Plan Category</th>
+                                                <th data-i18n="tbl_amount">Amount</th>
+                                                <th data-i18n="tbl_notes">Description</th>
+                                                <th data-i18n="tbl_status">Status</th>
+                                                <th data-i18n="tbl_actions">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ben-claims-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_assets_inventory">Corporate Assets & Equipment Ledger</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_asset">Asset Name</th>
+                                                <th data-i18n="tbl_serial">Serial Number</th>
+                                                <th data-i18n="tbl_category">Category</th>
+                                                <th data-i18n="tbl_status">Status</th>
+                                                <th data-i18n="tbl_assignee">Assigned To</th>
+                                                <th data-i18n="tbl_actions">Handover Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="assets-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_asset_assignment">Assign New Gear Handover</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="asset-assign-form" class="glass-form">
+                                    <div class="form-group">
+                                        <label for="asset-select" data-i18n="lbl_select_asset">Select Asset</label>
+                                        <select id="asset-select" class="glass-select" required></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="asset-emp-select" data-i18n="lbl_assignee">Assignee Employee</label>
+                                        <select id="asset-emp-select" class="glass-select" required></select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-full"><i class="fa-solid fa-handshake"></i> <span data-i18n="btn_assign_asset">Confirm Handover</span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 13. DMS & PULSE SURVEYS VIEW -->
+                <section id="dms-engagement" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="dms_eng_title">Digital Vault & Employee Engagement Desk</h2>
+                            <p data-i18n="dms_eng_subtitle">Access signed company documents and appreciate team achievements on Kudos wall</p>
+                        </div>
+                    </div>
+                    <div class="dms-grid">
+                        <div class="card glass span-2">
+                            <div class="card-header border-bottom">
+                                <h3 data-i18n="lbl_vault_explorer"><i class="fa-solid fa-vault"></i> Secure Document Vault Explorer</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="add-document-form" class="glass-form inline-form">
+                                    <div class="form-group">
+                                        <label for="doc-title" data-i18n="lbl_doc_title">Document Title</label>
+                                        <input type="text" id="doc-title" placeholder="Visa Copy or Passport Scanner..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="doc-category" data-i18n="lbl_category">Category</label>
+                                        <select id="doc-category" class="glass-select">
+                                            <option value="Contract">Contract</option>
+                                            <option value="Visa">Visa / Iqama</option>
+                                            <option value="ID">National Identity</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="doc-expiry" data-i18n="lbl_expiry">Expiry Date</label>
+                                        <input type="date" id="doc-expiry" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-cloud-arrow-up"></i> <span data-i18n="btn_upload">Upload</span></button>
+                                </form>
+                                <div class="divider"></div>
+                                <h4 style="margin: 16px 0 8px 0;" data-i18n="lbl_active_documents">Active Documents Repository</h4>
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_id">Doc ID</th>
+                                                <th data-i18n="tbl_title">Title</th>
+                                                <th data-i18n="tbl_category">Category</th>
+                                                <th data-i18n="tbl_expiry">Expiry Date</th>
+                                                <th data-i18n="tbl_ocr_status">AI OCR Meta</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="documents-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_kudos_wall"><i class="fa-solid fa-award icon-amber"></i> Peer Kudos & Recognition Wall</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="kudos-form" class="glass-form">
+                                    <div class="form-group">
+                                        <label for="kudos-receiver" data-i18n="lbl_receiver">Receiver Name</label>
+                                        <input type="text" id="kudos-receiver" placeholder="Enter peer name (e.g. David Miller)..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kudos-message" data-i18n="lbl_kudos_msg">Appreciation Message</label>
+                                        <textarea id="kudos-message" placeholder="Thank you for resolving the database crash!" required></textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="kudos-points" data-i18n="lbl_points">Appreciation Points</label>
+                                            <input type="number" id="kudos-points" value="100" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kudos-badge" data-i18n="lbl_badge">Select Badge</label>
+                                            <select id="kudos-badge" class="glass-select">
+                                                <option value="Team Player">Team Player</option>
+                                                <option value="Role Model">Role Model</option>
+                                                <option value="Customer Hero">Customer Hero</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-full"><i class="fa-solid fa-gift"></i> <span data-i18n="btn_send_kudos">Award Kudos Points</span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_kudos_feed">Appreciations Feed</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="kudos-wall-feed" class="kudos-feed"></div>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_pulse_surveys"><i class="fa-solid fa-square-poll-vertical"></i> Anonymous Pulse Feedback Surveys</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="pulse-survey-form" class="glass-form">
+                                    <div class="form-group">
+                                        <label for="survey-select" data-i18n="lbl_select_survey">Active Surveys</label>
+                                        <select id="survey-select" class="glass-select" required></select>
+                                    </div>
+                                    <div class="form-row" style="margin-top:12px;">
+                                        <div class="form-group">
+                                            <label>Q1: How happy are you with current tools & workspaces?</label>
+                                            <select id="survey-q1" class="glass-select">
+                                                <option value="5">5 - Extremely Happy</option>
+                                                <option value="4">4 - Happy</option>
+                                                <option value="3">3 - Neutral</option>
+                                                <option value="2">2 - Dissatisfied</option>
+                                                <option value="1">1 - Extremely Dissatisfied</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Q2: Is workload distributed equally within your team?</label>
+                                            <select id="survey-q2" class="glass-select">
+                                                <option value="5">5 - Highly Balanced</option>
+                                                <option value="4">4 - Fairly Balanced</option>
+                                                <option value="3">3 - Ok</option>
+                                                <option value="2">2 - Unbalanced</option>
+                                                <option value="1">1 - Highly Stressed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary w-full" style="margin-top:16px;"><i class="fa-solid fa-square-check"></i> <span data-i18n="btn_submit_feedback">Submit Anonymously</span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 14. TIMESHEETS & PROJECTS VIEW -->
+                <section id="timesheets-projects" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="timesheets_title">Timesheets & Project Resource allocations</h2>
+                            <p data-i18n="timesheets_subtitle">Log timesheet billable hours and track headcount planning approvals</p>
+                        </div>
+                    </div>
+                    <div class="timesheets-grid">
+                        <div class="card glass span-2">
+                            <div class="card-header border-bottom">
+                                <h3 data-i18n="lbl_headcount_planning">Headcount Budget Planning (FY 2026)</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_dept">Department</th>
+                                                <th data-i18n="tbl_target_headcount">Target Staff</th>
+                                                <th data-i18n="tbl_budget">Approved Budget</th>
+                                                <th data-i18n="tbl_year">Fiscal Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="headcount-plans-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_project_allocations">Project Allocations</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="projects-list-container" class="projects-list-container"></div>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-3">
+                            <div class="card-header border-bottom">
+                                <h3 data-i18n="lbl_timesheet_log">Weekly Log Sheet Entry</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="timesheet-form" class="glass-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="ts-emp-name" data-i18n="lbl_employee">Employee Name</label>
+                                            <input type="text" id="ts-emp-name" required readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ts-project-select" data-i18n="lbl_project">Project Context</label>
+                                            <select id="ts-project-select" class="glass-select" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row" style="margin-top:12px;">
+                                        <div class="form-group">
+                                            <label for="ts-start" data-i18n="lbl_week_start">Week Start</label>
+                                            <input type="date" id="ts-start" value="2026-06-08" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ts-end" data-i18n="lbl_week_end">Week End</label>
+                                            <input type="date" id="ts-end" value="2026-06-14" required>
+                                        </div>
+                                    </div>
+                                    <div class="timesheet-days-grid" style="margin-top:16px;">
+                                        <div class="day-input-cell"><label>Mon</label><input type="number" step="0.5" id="ts-mon" min="0" max="16" value="8" required></div>
+                                        <div class="day-input-cell"><label>Tue</label><input type="number" step="0.5" id="ts-tue" min="0" max="16" value="8" required></div>
+                                        <div class="day-input-cell"><label>Wed</label><input type="number" step="0.5" id="ts-wed" min="0" max="16" value="8" required></div>
+                                        <div class="day-input-cell"><label>Thu</label><input type="number" step="0.5" id="ts-thu" min="0" max="16" value="8" required></div>
+                                        <div class="day-input-cell"><label>Fri</label><input type="number" step="0.5" id="ts-fri" min="0" max="16" value="8" required></div>
+                                    </div>
+                                    <div class="form-group" style="margin-top:16px;">
+                                        <label for="ts-notes" data-i18n="lbl_work_done">Detailed Tasks Accomplished</label>
+                                        <input type="text" id="ts-notes" placeholder="Coding schema migrations and database unit tests..." required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-full mt-4"><i class="fa-solid fa-calendar-check"></i> <span data-i18n="btn_submit_timesheet">Submit Timesheet Log</span></button>
+                                </form>
+                                <div class="divider"></div>
+                                <h4 style="margin: 16px 0 8px 0;" data-i18n="lbl_timesheets_history">Submitted Timesheets Log</h4>
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_id">TS ID</th>
+                                                <th data-i18n="tbl_employee">Employee</th>
+                                                <th data-i18n="tbl_dates">Dates Scope</th>
+                                                <th data-i18n="tbl_status">Status</th>
+                                                <th data-i18n="tbl_actions">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="timesheets-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 15. EXIT HUB (OFFBOARDING) VIEW -->
+                <section id="exit-hub" class="tab-panel">
+                    <div class="view-header">
+                        <div>
+                            <h2 data-i18n="exit_title">Exit Hub & Offboarding clearance Desk</h2>
+                            <p data-i18n="exit_subtitle">File voluntary resignation requests, check clearance checkouts and calculate gratuity</p>
+                        </div>
+                    </div>
+                    <div class="exit-grid">
+                        <div class="card glass">
+                            <div class="card-header border-bottom">
+                                <h3 data-i18n="lbl_submit_resignation">Voluntary Resignation Request</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="exit-request-form" class="glass-form">
+                                    <div class="form-group">
+                                        <label for="exit-emp-name" data-i18n="lbl_employee">Employee Name</label>
+                                        <input type="text" id="exit-emp-name" required readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exit-date" data-i18n="lbl_requested_last_day">Requested Last Working Day</label>
+                                        <input type="date" id="exit-date" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exit-reason" data-i18n="lbl_exit_reason">Primary Resignation Reason</label>
+                                        <textarea id="exit-reason" placeholder="Explain core career change/relocation reasons..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary w-full"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="btn_submit_exit">File Exit Request</span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card glass span-2">
+                            <div class="card-header">
+                                <h3 data-i18n="lbl_exit_requests_log">Offboarding Clearance Status</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="glass-table-wrapper">
+                                    <table class="glass-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="tbl_employee">Employee</th>
+                                                <th data-i18n="tbl_exit_reason">Reason</th>
+                                                <th data-i18n="tbl_exit_last_day">Last Day</th>
+                                                <th data-i18n="tbl_gratuity">Gratuity Reward</th>
+                                                <th data-i18n="tbl_clearance_checklist">Clearance Status</th>
+                                                <th data-i18n="tbl_status">Status</th>
+                                                <th data-i18n="tbl_actions">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="exits-table-body"></tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

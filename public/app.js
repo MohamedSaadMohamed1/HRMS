@@ -116,7 +116,100 @@ const i18n = {
         form_job: "Job Title",
         form_salary: "Basic Salary",
         form_status: "Lifecycle state",
-        save_emp: "Save Employee File"
+        save_emp: "Save Employee File",
+        menu_performance: "Performance & Goals",
+        menu_skills_lms: "Skills Matrix & LMS",
+        menu_benefits_assets: "Benefits & Assets",
+        menu_dms_surveys: "DMS Vault & Surveys",
+        menu_timesheets_projects: "Projects & Timesheets",
+        menu_exit_hub: "Exit Hub & Clearances",
+        perf_title: "Performance & OKR Hub",
+        perf_subtitle: "Track individual goals, OKRs progress, and analyze talent distributions",
+        perf_goals_okrs: "Goals & OKRs Management",
+        lbl_assignee: "Assignee",
+        lbl_title: "Title",
+        lbl_weight: "Weight",
+        lbl_target: "Target Value",
+        btn_add_goal: "Add Goal",
+        lbl_active_goals: "Active Goals",
+        lbl_okr_progress: "Active OKRs Progress",
+        lbl_9box_grid: "HR 9-Box Grid",
+        lms_title: "Skills & Learning Center",
+        lms_subtitle: "Evaluate competencies, view courses catalogs, and monitor certification pathways",
+        lbl_competency_skills: "Skills & Competency Grid",
+        lbl_employee: "Employee Name",
+        lbl_skill: "Skill",
+        lbl_current_level: "Current Level",
+        lbl_target_level: "Target Level",
+        lbl_certified: "Certified",
+        btn_save_skill: "Update Skill Level",
+        lbl_lms_courses: "LMS Catalog & SCORM Courses",
+        lbl_mandatory_exam: "Mandatory Certification Exam",
+        lbl_exam_help: "Answer the following question to earn your badge",
+        lbl_cert_title: "OFFICIAL CERTIFICATE",
+        ben_title: "Benefits & Assets Tracker",
+        ben_subtitle: "Enroll in flexible corporate benefits schemes and assign IT/office equipment",
+        lbl_benefit_plans: "Benefit Plans",
+        lbl_benefit_plan: "Benefit Plan",
+        lbl_claim_amount: "Amount ($)",
+        lbl_notes: "Notes",
+        btn_submit_benefit: "File Benefit Claim",
+        lbl_benefit_claims_history: "Claims Log",
+        lbl_assets_inventory: "Assets Inventory Ledger",
+        lbl_asset_assignment: "Handover Gear Assignment",
+        lbl_select_asset: "Asset",
+        btn_assign_asset: "Handover Asset",
+        dms_eng_title: "Digital Vault & Engagement Desk",
+        dms_eng_subtitle: "Access signed company documents and appreciate achievements on Kudos wall",
+        lbl_vault_explorer: "Document Vault Explorer",
+        lbl_doc_title: "Document Title",
+        lbl_expiry: "Expiry Date",
+        btn_upload: "Upload Doc",
+        lbl_active_documents: "Active Documents",
+        lbl_kudos_wall: "Peer Kudos Wall",
+        lbl_receiver: "Recipient Peer Name",
+        lbl_kudos_msg: "Appreciation Message",
+        lbl_points: "Points",
+        lbl_badge: "Select Badge",
+        btn_send_kudos: "Award Kudos Points",
+        lbl_kudos_feed: "Appreciations Wall Feed",
+        lbl_pulse_surveys: "Anonymous Pulse Surveys",
+        lbl_select_survey: "Select Active Survey",
+        btn_submit_feedback: "Submit Feedback",
+        timesheets_title: "Timesheets & Allocations",
+        timesheets_subtitle: "Log timesheet billable hours and track headcount planning approvals",
+        lbl_headcount_planning: "Headcount Budget Planning",
+        lbl_target_headcount: "Target Staff",
+        lbl_budget: "Budget",
+        lbl_year: "Year",
+        lbl_project_allocations: "Projects & Allocations",
+        lbl_timesheet_log: "Timesheet Grid matrix",
+        lbl_project: "Project",
+        lbl_week_start: "Week Start",
+        lbl_week_end: "Week End",
+        lbl_work_done: "Work Done Notes",
+        btn_submit_timesheet: "Submit Weekly Matrix",
+        lbl_timesheets_history: "Timesheets History Log",
+        exit_title: "Exit Hub & Offboarding",
+        exit_subtitle: "File voluntary resignation requests, check clearance checkouts and calculate gratuity",
+        lbl_submit_resignation: "Voluntary Resignation Request",
+        lbl_requested_last_day: "Last Working Day",
+        lbl_exit_reason: "Resignation Reason",
+        btn_submit_exit: "File Exit Request",
+        lbl_exit_requests_log: "Exit Hub Status logs",
+        tbl_asset: "Asset Name",
+        tbl_serial: "Serial Number",
+        tbl_category: "Category",
+        tbl_ocr_status: "AI OCR Meta",
+        tbl_gratuity: "Gratuity Reward",
+        tbl_clearance_checklist: "Clearance Status",
+        tbl_goal_title: "Goal Title",
+        tbl_due: "Due Date",
+        tbl_plan: "Benefit Plan",
+        tbl_project: "Project",
+        tbl_dates: "Date Scope",
+        tbl_exit_reason: "Reason",
+        tbl_exit_last_day: "Last Day"
     },
     ar: {
         tenant: "شركة الـ SaaS",
@@ -230,7 +323,100 @@ const i18n = {
         form_job: "المسمى الوظيفي",
         form_salary: "الراتب الأساسي",
         form_status: "حالة الموظف الأولية",
-        save_emp: "حفظ كشف ملف الموظف"
+        save_emp: "حفظ كشف ملف الموظف",
+        menu_performance: "الأداء والأهداف",
+        menu_skills_lms: "المهارات والتدريب LMS",
+        menu_benefits_assets: "المنافع والعهدة",
+        menu_dms_surveys: "المستندات والاستبيانات",
+        menu_timesheets_projects: "المشاريع والتايم شيت",
+        menu_exit_hub: "سجل إنهاء الخدمة",
+        perf_title: "مركز تقييم الأداء والأهداف OKRs",
+        perf_subtitle: "تابع أهداف الموظفين الفردية، وتقدم نتائج الأهداف والنتائج الرئيسية OKRs وتوزيع الكفاءات",
+        perf_goals_okrs: "إدارة الأهداف والنتائج الرئيسية",
+        lbl_assignee: "الموظف المسؤول",
+        lbl_title: "عنوان الهدف",
+        lbl_weight: "الوزن النسبي",
+        lbl_target: "القيمة المستهدفة",
+        btn_add_goal: "إضافة هدف جديد",
+        lbl_active_goals: "الأهداف النشطة حالياً",
+        lbl_okr_progress: "مستوى تقدم الأهداف الرئيسية OKR",
+        lbl_9box_grid: "مصفوفة الكفاءة والأداء التساعية 9-Box Grid",
+        lms_title: "منصة الكفاءات والتطوير والتدريب",
+        lms_subtitle: "قيم كفاءات الموظفين، استعرض دورات التدريب المتاحة، وتابع مسارات الشهادات المعتمدة",
+        lbl_competency_skills: "لوحة تقييم المهارات والكفاءات",
+        lbl_employee: "الموظف",
+        lbl_skill: "المهارة / الكفاءة",
+        lbl_current_level: "المستوى الحالي",
+        lbl_target_level: "المستوى المستهدف",
+        lbl_certified: "معتمد ومرخص رسمياً",
+        btn_save_skill: "تحديث مستوى المهارة",
+        lbl_lms_courses: "كتالوج التدريب ودورات SCORM التفاعلية",
+        lbl_mandatory_exam: "الاختبار الإلزامي المعتمد",
+        lbl_exam_help: "أجب عن السؤال التالي للحصول على شهادتك:",
+        lbl_cert_title: "شهادة اجتياز معتمدة",
+        ben_title: "بوابة المزايا وتتبع العهد والأصول",
+        ben_subtitle: "اشترك في خطط التأمين والمنافع المرنة، وقم بتسليم العهد والأجهزة للكوادر الوظيفية",
+        lbl_benefit_plans: "خطط المنافع المتاحة",
+        lbl_benefit_plan: "خطة المنفعة",
+        lbl_claim_amount: "قيمة المطالبة ($)",
+        lbl_notes: "التفاصيل / الملاحظات",
+        btn_submit_benefit: "تقديم طلب مطالبة بمستند",
+        lbl_benefit_claims_history: "سجل مطالبات التعويض والمنافع",
+        lbl_assets_inventory: "دفتر الأصول والعهدة المتاحة للشركة",
+        lbl_asset_assignment: "تسليم عهدة جديدة لموظف",
+        lbl_select_asset: "العهدة المراد تسليمها",
+        btn_assign_asset: "تأكيد تسليم العهدة",
+        dms_eng_title: "أرشيف الوثائق وصندوق تفاعل الموظفين",
+        dms_eng_subtitle: "تصفح الوثائق والملفات الموقعة رسمياً وقدم الشكر والتقدير لزملائك عبر جدار الثناء",
+        lbl_vault_explorer: "مستكشف وثائق الموظفين والشركة",
+        lbl_doc_title: "عنوان الملف / المستند",
+        lbl_expiry: "تاريخ الانتهاء",
+        btn_upload: "رفع وثيقة جديدة",
+        lbl_active_documents: "الوثائق النشطة والمؤرشفة",
+        lbl_kudos_wall: "جدار الثناء والتقدير للزملاء",
+        lbl_receiver: "الموظف الموجه له الثناء",
+        lbl_kudos_msg: "رسالة التقدير",
+        lbl_points: "نقاط التقدير",
+        lbl_badge: "شعار التقدير",
+        btn_send_kudos: "إرسال شكر ومنح نقاط تقدير",
+        lbl_kudos_feed: "أحدث عبارات الثناء وجدار التميز",
+        lbl_pulse_surveys: "استبيانات قياس الرضا والنبض الوظيفي",
+        lbl_select_survey: "اختر الاستبيان النشط",
+        btn_submit_feedback: "إرسال المشاركة بشكل مجهول",
+        timesheets_title: "التايم شيت وساعات المشاريع",
+        timesheets_subtitle: "سجل ساعات العمل على المشاريع وتابع خطط التوظيف السنوية وإحصائيات الميزانية",
+        lbl_headcount_planning: "تخطيط القوى العاملة والميزانية المعتمدة",
+        lbl_target_headcount: "عدد الكوادر المستهدفة",
+        lbl_budget: "الميزانية المعتمدة",
+        lbl_year: "السنة المالية",
+        lbl_project_allocations: "المشاريع وتخصيص الموارد البشرية",
+        lbl_timesheet_log: "تعبئة مصفوفة الساعات الأسبوعية (Timesheet)",
+        lbl_project: "المشروع المرتبط",
+        lbl_week_start: "بداية الأسبوع",
+        lbl_week_end: "نهاية الأسبوع",
+        lbl_work_done: "تفاصيل المهام المنجزة",
+        btn_submit_timesheet: "اعتماد ورفع التايم شيت",
+        lbl_timesheets_history: "سجل التايم شيت الأسبوعي المعتمد",
+        exit_title: "مركز إنهاء الخدمة والمخالصات المالية",
+        exit_subtitle: "قدم طلب استقالة اختياري، وتابع إجراءات المخالصة الإدارية واحتسب مكافأة نهاية الخدمة",
+        lbl_submit_resignation: "تقديم طلب استقالة اختياري",
+        lbl_requested_last_day: "آخر يوم عمل مطلوب",
+        lbl_exit_reason: "سبب الاستقالة الأساسي",
+        btn_submit_exit: "تسجيل ورفع طلب الاستقالة",
+        lbl_exit_requests_log: "مراحل المخالصة وتسوية نهاية الخدمة للموظفين",
+        tbl_asset: "العهدة / الجهاز",
+        tbl_serial: "الرقم التسلسلي",
+        tbl_category: "الفئة",
+        tbl_ocr_status: "بيانات AI OCR",
+        tbl_gratuity: "مكافأة نهاية الخدمة",
+        tbl_clearance_checklist: "حالة المخالصة الإدارية",
+        tbl_goal_title: "الهدف الوظيفي",
+        tbl_due: "تاريخ الاستحقاق",
+        tbl_plan: "خطة المنافع",
+        tbl_project: "المشروع",
+        tbl_dates: "الفترة الزمنية",
+        tbl_exit_reason: "السبب",
+        tbl_exit_last_day: "آخر يوم عمل"
     }
 };
 
@@ -313,6 +499,15 @@ function renderAllViews() {
     renderExpenseClaimsTable();
     renderWorkflowCanvas();
     renderAIFlightRisks();
+
+    // Enterprise Modules Renders
+    renderPerformanceTab();
+    renderSkillsLMSTab();
+    renderBenefitsAssetsTab();
+    renderDMSEngagementTab();
+    renderTimesheetsProjectsTab();
+    renderExitHubTab();
+
     applyLanguageTranslations();
     applyRolePermissions();
 }
@@ -725,9 +920,375 @@ function setupEventListeners() {
             e.preventDefault();
             canvasEl.classList.remove("drag-over");
             
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // ==========================================
+    // ENTERPRISE MODULES EVENT LISTENERS
+    // ==========================================
+
+    // Goals Form submit
+    const goalForm = document.getElementById("add-goal-form");
+    if (goalForm) {
+        goalForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const empId = document.getElementById("goal-emp-id").value;
+            const title = document.getElementById("goal-title").value;
+            const weight = parseFloat(document.getElementById("goal-weight").value);
+            const target = parseFloat(document.getElementById("goal-target").value);
             try {
-                const data = JSON.parse(e.dataTransfer.getData("text/plain"));
-                await addWorkflowNode(data.type, data.action);
+                await fetch('/api/goals', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tenant_id: db.activeTenant,
+                        employee_id: empId,
+                        title,
+                        description: "Standard Goal",
+                        weight,
+                        target_value: target,
+                        current_value: 0,
+                        status: "Not Started",
+                        due_date: "2026-12-31"
+                    })
+                });
+                await logActivity(`Created Goal for ${empId}: ${title}`);
+                goalForm.reset();
+                await refreshData();
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // Skills Form submit
+    const skillForm = document.getElementById("log-skill-form");
+    if (skillForm) {
+        skillForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const empId = document.getElementById("skill-emp-select").value;
+            const skillId = document.getElementById("skill-library-select").value;
+            const current = parseInt(document.getElementById("skill-current").value);
+            const target = parseInt(document.getElementById("skill-target").value);
+            const certified = document.getElementById("skill-certified").checked;
+            try {
+                await fetch('/api/employee-skills', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        employee_id: empId,
+                        skill_id: skillId,
+                        current_level: current,
+                        target_level: target,
+                        certified
+                    })
+                });
+                await logActivity(`Updated competency skill ${skillId} level for ${empId}`);
+                skillForm.reset();
+                await refreshData();
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // LMS SCORM Media Player Actions
+    let activeEnrollmentId = null;
+    let activeEnrollmentProgress = 0;
+    
+    window.startLMSCourse = function(enrollmentId, courseTitle, progress) {
+        activeEnrollmentId = enrollmentId;
+        activeEnrollmentProgress = progress;
+        document.getElementById("scorm-course-title").textContent = courseTitle;
+        document.getElementById("player-progress-bar").style.width = `${progress}%`;
+        document.getElementById("player-percent-label").textContent = `${Math.round(progress)}%`;
+        document.getElementById("scorm-player-card").classList.remove("hidden");
+        document.getElementById("certificate-display").classList.add("hidden");
+        document.getElementById("course-exam-panel").classList.add("hidden");
+
+        if (progress >= 100) {
+            document.getElementById("certificate-display").classList.remove("hidden");
+            document.getElementById("cert-course-name").textContent = courseTitle;
+        } else {
+            document.getElementById("course-exam-panel").classList.add("hidden");
+        }
+        
+        document.getElementById("scorm-player-card").scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const closeScormBtn = document.getElementById("close-scorm-btn");
+    if (closeScormBtn) {
+        closeScormBtn.addEventListener("click", () => {
+            document.getElementById("scorm-player-card").classList.add("hidden");
+        });
+    }
+
+    const playTriggerBtn = document.getElementById("play-trigger-btn");
+    if (playTriggerBtn) {
+        playTriggerBtn.addEventListener("click", async () => {
+            if (!activeEnrollmentId) return;
+            const spin = document.getElementById("player-spin");
+            spin.classList.remove("hidden");
+            playTriggerBtn.disabled = true;
+
+            setTimeout(async () => {
+                spin.classList.add("hidden");
+                playTriggerBtn.disabled = false;
+                
+                activeEnrollmentProgress = Math.min(activeEnrollmentProgress + 20, 100);
+                document.getElementById("player-progress-bar").style.width = `${activeEnrollmentProgress}%`;
+                document.getElementById("player-percent-label").textContent = `${activeEnrollmentProgress}%`;
+
+                try {
+                    await fetch('/api/enrollments/progress', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            enrollment_id: activeEnrollmentId,
+                            progress: activeEnrollmentProgress
+                        })
+                    });
+
+                    if (activeEnrollmentProgress >= 100) {
+                        document.getElementById("course-exam-panel").classList.remove("hidden");
+                    }
+                    await refreshData();
+                } catch(e) {
+                    console.error(e);
+                }
+            }, 800);
+        });
+    }
+
+    const submitExamBtn = document.getElementById("submit-exam-btn");
+    if (submitExamBtn) {
+        submitExamBtn.addEventListener("click", () => {
+            const answer = document.querySelector('input[name="exam-q1"]:checked');
+            if (answer && answer.value === "correct") {
+                document.getElementById("course-exam-panel").classList.add("hidden");
+                document.getElementById("certificate-display").classList.remove("hidden");
+                document.getElementById("cert-course-name").textContent = document.getElementById("scorm-course-title").textContent;
+                alert(db.activeLanguage === 'ar' ? 'تهانينا! لقد نجحت في الاختبار وحصلت على الشهادة!' : 'Congratulations! You passed the exam and earned a certificate!');
+            } else {
+                alert(db.activeLanguage === 'ar' ? 'إجابة خاطئة. يرجى مراجعة المواد والمحاولة مرة أخرى.' : 'Incorrect answer. Please review materials and try again.');
+            }
+        });
+    }
+
+    // Benefits Form submit
+    const benForm = document.getElementById("benefit-claim-form");
+    if (benForm) {
+        benForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const empId = document.getElementById("ben-emp-select").value;
+            const planId = document.getElementById("ben-plan-select").value;
+            const amount = parseFloat(document.getElementById("ben-amount").value);
+            const notes = document.getElementById("ben-notes").value;
+            try {
+                await fetch('/api/benefits/claims', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tenant_id: db.activeTenant,
+                        employee_id: empId,
+                        plan_id: planId,
+                        amount,
+                        notes
+                    })
+                });
+                await logActivity(`Filed Benefit Claim for ${empId}: ${planId}`);
+                benForm.reset();
+                await refreshData();
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // Asset Assign Form submit
+    const assetAssignForm = document.getElementById("asset-assign-form");
+    if (assetAssignForm) {
+        assetAssignForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const assetId = document.getElementById("asset-select").value;
+            const empId = document.getElementById("asset-emp-select").value;
+            try {
+                await fetch('/api/assets/assignments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ asset_id: assetId, employee_id: empId })
+                });
+                await logActivity(`Assigned asset ${assetId} to employee ${empId}`);
+                assetAssignForm.reset();
+                await refreshData();
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // Document Form submit
+    const docForm = document.getElementById("add-document-form");
+    if (docForm) {
+        docForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const title = document.getElementById("doc-title").value;
+            const cat = document.getElementById("doc-category").value;
+            const expiry = document.getElementById("doc-expiry").value;
+            try {
+                await fetch('/api/documents', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tenant_id: db.activeTenant,
+                        employee_id: "EMP-003",
+                        title,
+                        category: cat,
+                        expiry_date: expiry,
+                        ocr_meta: JSON.stringify({ verified: true, parsed_date: new Date().toISOString().split('T')[0] })
+                    })
+                });
+                await logActivity(`Uploaded Document: ${title}`);
+                docForm.reset();
+                await refreshData();
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // Survey Response Form submit
+    const surveyForm = document.getElementById("pulse-survey-form");
+    if (surveyForm) {
+        surveyForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const surveyId = document.getElementById("survey-select").value;
+            const q1 = parseInt(document.getElementById("survey-q1").value);
+            const q2 = parseInt(document.getElementById("survey-q2").value);
+            const score = ((q1 + q2) / 2).toFixed(2);
+            try {
+                await fetch('/api/surveys/responses', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        survey_id: surveyId,
+                        answers: { q1, q2 },
+                        sentiment_score: score
+                    })
+                });
+                await logActivity(`Submitted pulse survey response. Average Score: ${score}`);
+                alert(db.activeLanguage === 'ar' ? 'شكراً لك! تم تقديم رأيك بنجاح وبسرية تامة.' : 'Thank you! Your anonymous response was submitted.');
+                surveyForm.reset();
+                await refreshData();
+            } catch(err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // Kudos Form submit
+    const kudosFormForm = document.getElementById("kudos-form");
+    if (kudosFormForm) {
+        kudosFormForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const receiver = document.getElementById("kudos-receiver").value;
+            const message = document.getElementById("kudos-message").value;
+            const points = parseInt(document.getElementById("kudos-points").value);
+            const badge = document.getElementById("kudos-badge").value;
+            try {
+                await fetch('/api/recognitions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tenant_id: db.activeTenant,
+                        sender_name: db.currentUser.name,
+                        receiver_name: receiver,
+                        message,
+                        points,
+                        badge
+                    })
+                });
+                await logActivity(`Awarded Kudos points to ${receiver}`);
+                kudosFormForm.reset();
+                await refreshData();
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // Timesheet Form submit
+    const tsForm = document.getElementById("timesheet-form");
+    if (tsForm) {
+        tsForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const empName = document.getElementById("ts-emp-name").value;
+            const project = document.getElementById("ts-project-select").value;
+            const start = document.getElementById("ts-start").value;
+            const end = document.getElementById("ts-end").value;
+            
+            const mon = parseFloat(document.getElementById("ts-mon").value) || 0;
+            const tue = parseFloat(document.getElementById("ts-tue").value) || 0;
+            const wed = parseFloat(document.getElementById("ts-wed").value) || 0;
+            const thu = parseFloat(document.getElementById("ts-thu").value) || 0;
+            const fri = parseFloat(document.getElementById("ts-fri").value) || 0;
+            
+            const notes = document.getElementById("ts-notes").value;
+            
+            const lines = [
+                { project_name: project, work_date: 'Monday', hours_worked: mon, billable: true, task_description: notes },
+                { project_name: project, work_date: 'Tuesday', hours_worked: tue, billable: true, task_description: notes },
+                { project_name: project, work_date: 'Wednesday', hours_worked: wed, billable: true, task_description: notes },
+                { project_name: project, work_date: 'Thursday', hours_worked: thu, billable: true, task_description: notes },
+                { project_name: project, work_date: 'Friday', hours_worked: fri, billable: true, task_description: notes }
+            ];
+
+            try {
+                await fetch('/api/timesheets', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tenant_id: db.activeTenant,
+                        employee_name: empName,
+                        start_date: start,
+                        end_date: end,
+                        lines
+                    })
+                });
+                await logActivity(`Timesheet submitted for ${empName}`);
+                tsForm.reset();
+                await refreshData();
+            } catch (err) {
+                console.error(err);
+            }
+        });
+    }
+
+    // Exit Hub Form submit
+    const exitHubForm = document.getElementById("exit-request-form");
+    if (exitHubForm) {
+        exitHubForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const empName = document.getElementById("exit-emp-name").value;
+            const date = document.getElementById("exit-date").value;
+            const reason = document.getElementById("exit-reason").value;
+            try {
+                await fetch('/api/exits', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tenant_id: db.activeTenant,
+                        employee_name: empName,
+                        requested_last_day: date,
+                        exit_reason: reason
+                    })
+                });
+                await logActivity(`Voluntary Resignation Exit Request filed for ${empName}`);
+                exitHubForm.reset();
+                await refreshData();
             } catch (err) {
                 console.error(err);
             }
@@ -1647,5 +2208,554 @@ function applyRolePermissions() {
     } else {
         adminElements.forEach(el => el.classList.remove("hidden"));
         document.getElementById("role-select").className = "glass-select";
+    }
+}
+
+// ==========================================
+// ENTERPRISE MODULES RENDERING LOGIC
+// ==========================================
+
+// Helper to fill employee options in form select tags
+async function populateEmployeeSelects() {
+    try {
+        const res = await fetch(`/api/employees?tenant_id=${db.activeTenant}`);
+        const emps = await res.json();
+        const selectors = [
+            document.getElementById("goal-emp-id"),
+            document.getElementById("skill-emp-select"),
+            document.getElementById("ben-emp-select"),
+            document.getElementById("asset-emp-select")
+        ];
+        
+        selectors.forEach(sel => {
+            if (!sel) return;
+            sel.innerHTML = "";
+            emps.forEach(e => {
+                const opt = document.createElement("option");
+                opt.value = e.id;
+                opt.textContent = `${e.first_name} ${e.last_name} (${e.job_title})`;
+                sel.appendChild(opt);
+            });
+        });
+
+        const tsNameInput = document.getElementById("ts-emp-name");
+        if (tsNameInput) tsNameInput.value = db.currentUser.name;
+        
+        const exitNameInput = document.getElementById("exit-emp-name");
+        if (exitNameInput) exitNameInput.value = db.currentUser.name;
+        
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// 1. Performance Tab Render
+async function renderPerformanceTab() {
+    await populateEmployeeSelects();
+    const tbody = document.getElementById("goals-table-body");
+    if (!tbody) return;
+    tbody.innerHTML = "";
+
+    try {
+        const res = await fetch(`/api/goals?tenant_id=${db.activeTenant}`);
+        const goals = await res.json();
+
+        goals.forEach(g => {
+            const pct = Math.round((g.current_value / g.target_value) * 100) || 0;
+            tbody.innerHTML += `
+                <tr>
+                    <td><strong>${g.first_name} ${g.last_name}</strong></td>
+                    <td>${g.title}</td>
+                    <td>${g.weight}</td>
+                    <td>
+                        <div class="progress-bar-outer" style="width:100px;">
+                            <div class="progress-bar-inner bg-teal" style="width: ${pct}%;"></div>
+                        </div>
+                        <span style="font-size:10px;">${pct}% (${g.current_value}/${g.target_value})</span>
+                    </td>
+                    <td><span class="badge ${g.status === 'Completed' ? 'badge-teal' : 'badge-orange'}">${g.status}</span></td>
+                    <td>${g.due_date || 'N/A'}</td>
+                </tr>
+            `;
+        });
+
+        const okrRes = await fetch(`/api/okrs?tenant_id=${db.activeTenant}`);
+        const okrs = await okrRes.json();
+        const okrList = document.getElementById("okrs-progress-list");
+        if (okrList) {
+            okrList.innerHTML = "";
+            okrs.forEach(o => {
+                okrList.innerHTML += `
+                    <div style="margin-bottom:12px;">
+                        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
+                            <strong>${o.title}</strong>
+                            <span>${o.progress}%</span>
+                        </div>
+                        <div class="progress-bar-outer">
+                            <div class="progress-bar-inner bg-violet" style="width: ${o.progress}%;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        const empRes = await fetch(`/api/employees?tenant_id=${db.activeTenant}`);
+        const emps = await empRes.json();
+        
+        document.querySelectorAll(".nine-box-grid .cell-members").forEach(c => c.innerHTML = "");
+
+        const boxes = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"];
+        emps.forEach((e, idx) => {
+            const boxId = boxes[idx % boxes.length];
+            const cell = document.querySelector(`.nine-box-grid [data-box="${boxId}"] .cell-members`);
+            if (cell) {
+                cell.innerHTML += `<span class="member-chip">${e.first_name} ${e.last_name[0] || ''}.</span>`;
+            }
+        });
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// 2. Skills & LMS Tab Render
+async function renderSkillsLMSTab() {
+    const matrixDiv = document.getElementById("skills-matrix-results");
+    if (!matrixDiv) return;
+    matrixDiv.innerHTML = "";
+
+    try {
+        const skillsRes = await fetch(`/api/skills?tenant_id=${db.activeTenant}`);
+        const skills = await skillsRes.json();
+
+        const librarySelect = document.getElementById("skill-library-select");
+        if (librarySelect) {
+            librarySelect.innerHTML = "";
+            skills.forEach(s => {
+                const opt = document.createElement("option");
+                opt.value = s.id;
+                opt.textContent = `${s.name} (${s.category})`;
+                librarySelect.appendChild(opt);
+            });
+        }
+
+        const empRes = await fetch(`/api/employees?tenant_id=${db.activeTenant}`);
+        const emps = await empRes.json();
+        
+        let matrixHTML = `<h4 style="margin-bottom:8px;">Competency Gap Analysis</h4><div class="glass-table-wrapper"><table class="glass-table"><thead><tr><th>Employee</th><th>Skill</th><th>Current</th><th>Target</th><th>Gap</th><th>Certified</th></tr></thead><tbody>`;
+
+        for (const emp of emps) {
+            const skillDetailsRes = await fetch(`/api/employee-skills?employee_id=${emp.id}`);
+            const empSkills = await skillDetailsRes.json();
+
+            empSkills.forEach(es => {
+                const gap = es.target_level - es.current_level;
+                const gapColor = gap > 0 ? 'red' : 'green';
+                const gapText = gap > 0 ? `-${gap} Level` : 'Met / Exceeded';
+                matrixHTML += `
+                    <tr>
+                        <td><strong>${emp.first_name} ${emp.last_name}</strong></td>
+                        <td>${es.skill_name}</td>
+                        <td>${es.current_level} / 5</td>
+                        <td>${es.target_level} / 5</td>
+                        <td style="color:${gapColor}; font-weight:700;">${gapText}</td>
+                        <td><span class="badge ${es.certified ? 'badge-teal' : 'badge-orange'}">${es.certified ? 'Certified' : 'Self-declared'}</span></td>
+                    </tr>
+                `;
+            });
+        }
+        matrixHTML += `</tbody></table></div>`;
+        matrixDiv.innerHTML = matrixHTML;
+
+        const coursesRes = await fetch(`/api/courses?tenant_id=${db.activeTenant}`);
+        const courses = await coursesRes.json();
+
+        const coursesDeck = document.getElementById("courses-deck-container");
+        if (coursesDeck) {
+            coursesDeck.innerHTML = "";
+            document.getElementById("courses-count").textContent = `${courses.length} Courses`;
+            
+            const enrollRes = await fetch(`/api/enrollments?tenant_id=${db.activeTenant}&employee_id=EMP-003`);
+            const enrollments = await enrollRes.json();
+
+            courses.forEach(c => {
+                const enrollment = enrollments.find(e => e.course_id === c.id);
+                const progress = enrollment ? enrollment.progress_percentage : 0;
+                const status = enrollment ? enrollment.status : "Not Started";
+                const enrollmentId = enrollment ? enrollment.id : `mock-e-${c.id}`;
+
+                let cardClass = "glow-violet";
+                if (status === "Completed") cardClass = "glow-teal";
+
+                coursesDeck.innerHTML += `
+                    <div class="course-card ${cardClass}">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                <span class="badge ${c.is_mandatory ? 'badge-red' : 'badge-orange'}">${c.is_mandatory ? 'Mandatory' : 'Optional'}</span>
+                                <span class="badge">${status}</span>
+                            </div>
+                            <h4>${c.title}</h4>
+                            <p>${c.description}</p>
+                        </div>
+                        <div>
+                            <div class="card-meta">
+                                <span><i class="fa-regular fa-clock"></i> ${c.duration_minutes} Mins</span>
+                                <strong>${progress}% Completed</strong>
+                            </div>
+                            <div class="progress-bar-outer" style="margin-top:6px; margin-bottom:12px;">
+                                <div class="progress-bar-inner bg-teal" style="width: ${progress}%;"></div>
+                            </div>
+                            <button class="btn btn-secondary btn-small w-full" onclick="startLMSCourse('${enrollmentId}', '${c.title}', ${progress})"><i class="fa-solid fa-graduation-cap"></i> Start Learning</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+// 3. Benefits & Assets Tab Render
+async function renderBenefitsAssetsTab() {
+    const claimsTbody = document.getElementById("ben-claims-table-body");
+    if (!claimsTbody) return;
+    claimsTbody.innerHTML = "";
+
+    try {
+        const plansRes = await fetch(`/api/benefits/plans?tenant_id=${db.activeTenant}`);
+        const plans = await plansRes.json();
+
+        const planSelect = document.getElementById("ben-plan-select");
+        if (planSelect) {
+            planSelect.innerHTML = "";
+            plans.forEach(p => {
+                const opt = document.createElement("option");
+                opt.value = p.id;
+                opt.textContent = `${p.name} (${p.type}) allowance: $${p.monthly_allowance}`;
+                planSelect.appendChild(opt);
+            });
+        }
+
+        const claimsRes = await fetch(`/api/benefits/claims?tenant_id=${db.activeTenant}`);
+        const claims = await claimsRes.json();
+
+        claims.forEach(c => {
+            let statusClass = "badge-orange";
+            if (c.status === "Approved") statusClass = "badge-teal";
+            if (c.status === "Rejected") statusClass = "badge-red";
+
+            let actionHTML = "---";
+            if (c.status === "Pending" && db.activeRole !== "Employee") {
+                actionHTML = `
+                    <button class="btn btn-secondary btn-small" onclick="handleBenefitClaimApproval('${c.id}', 'Approved')"><i class="fa-solid fa-circle-check" style="color:teal;"></i></button>
+                    <button class="btn btn-secondary btn-small" onclick="handleBenefitClaimApproval('${c.id}', 'Rejected')"><i class="fa-solid fa-circle-xmark" style="color:red;"></i></button>
+                `;
+            }
+
+            claimsTbody.innerHTML += `
+                <tr>
+                    <td>${c.id}</td>
+                    <td><strong>${c.employee_id}</strong></td>
+                    <td>${c.plan_id}</td>
+                    <td>$${c.amount}</td>
+                    <td>${c.notes}</td>
+                    <td><span class="badge ${statusClass}">${c.status}</span></td>
+                    <td>${actionHTML}</td>
+                </tr>
+            `;
+        });
+
+        const assetsRes = await fetch(`/api/assets?tenant_id=${db.activeTenant}`);
+        const assets = await assetsRes.json();
+
+        const assetsTbody = document.getElementById("assets-table-body");
+        const assetSelect = document.getElementById("asset-select");
+        if (assetsTbody) {
+            assetsTbody.innerHTML = "";
+            if (assetSelect) assetSelect.innerHTML = "";
+
+            assets.forEach(a => {
+                let statusClass = "badge-teal";
+                if (a.status === "Assigned") statusClass = "badge-orange";
+                if (a.status === "Maintenance") statusClass = "badge-red";
+
+                let actionHTML = "---";
+                if (a.status === "Assigned") {
+                    actionHTML = `<button class="btn btn-secondary btn-small" style="color:var(--orange);" onclick="returnAssetAssignment('${a.id}')"><i class="fa-solid fa-rotate-left"></i> Return Asset</button>`;
+                } else if (a.status === "In Stock" && assetSelect) {
+                    const opt = document.createElement("option");
+                    opt.value = a.id;
+                    opt.textContent = `${a.name} (SN: ${a.serial_number})`;
+                    assetSelect.appendChild(opt);
+                }
+
+                assetsTbody.innerHTML += `
+                    <tr>
+                        <td><strong>${a.name}</strong></td>
+                        <td>${a.serial_number}</td>
+                        <td>${a.category}</td>
+                        <td><span class="badge ${statusClass}">${a.status}</span></td>
+                        <td>${a.employee_id ? `<strong>${a.first_name} ${a.last_name}</strong>` : 'Available in Stock'}</td>
+                        <td>${actionHTML}</td>
+                    </tr>
+                `;
+            });
+        }
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+window.handleBenefitClaimApproval = async function(id, status) {
+    try {
+        await fetch(`/api/benefits/claims/${id}/status`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status })
+        });
+        await logActivity(`Benefit Claim ${id} updated to status: ${status}`);
+        await refreshData();
+    } catch(e) {
+        console.error(e);
+    }
+};
+
+window.returnAssetAssignment = async function(assetId) {
+    try {
+        let assignmentId = "AA-101";
+        if (assetId === "AST-201") assignmentId = "AA-201";
+
+        await fetch(`/api/assets/assignments/${assignmentId}/return`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        await logActivity(`Returned corporate asset device: ${assetId}`);
+        await refreshData();
+    } catch(e) {
+        console.error(e);
+    }
+};
+
+// 4. DMS & Surveys Tab Render
+async function renderDMSEngagementTab() {
+    const docTbody = document.getElementById("documents-table-body");
+    if (!docTbody) return;
+    docTbody.innerHTML = "";
+
+    try {
+        const docRes = await fetch(`/api/documents?tenant_id=${db.activeTenant}`);
+        const docs = await docRes.json();
+
+        docs.forEach(d => {
+            docTbody.innerHTML += `
+                <tr>
+                    <td>${d.id}</td>
+                    <td><strong>${d.title}</strong></td>
+                    <td>${d.category}</td>
+                    <td>${d.expiry_date || 'N/A'}</td>
+                    <td><small style="color:var(--teal); font-family:monospace;">${d.ocr_meta || 'No OCR processed'}</small></td>
+                </tr>
+            `;
+        });
+
+        const surveySelect = document.getElementById("survey-select");
+        const surveyRes = await fetch(`/api/surveys?tenant_id=${db.activeTenant}`);
+        const surveys = await surveyRes.json();
+
+        if (surveySelect) {
+            surveySelect.innerHTML = "";
+            surveys.forEach(s => {
+                const opt = document.createElement("option");
+                opt.value = s.id;
+                opt.textContent = s.title;
+                surveySelect.appendChild(opt);
+            });
+        }
+
+        const kudosRes = await fetch(`/api/recognitions?tenant_id=${db.activeTenant}`);
+        const kudos = await kudosRes.json();
+
+        const kudosFeed = document.getElementById("kudos-wall-feed");
+        if (kudosFeed) {
+            kudosFeed.innerHTML = "";
+            kudos.forEach(k => {
+                kudosFeed.innerHTML += `
+                    <div class="kudos-item">
+                        <div class="kudos-header">
+                            <strong>${k.sender_name} <i class="fa-solid fa-arrow-right-long text-teal"></i> ${k.receiver_name}</strong>
+                            <span class="kudos-badge-chip"><i class="fa-solid fa-star"></i> ${k.badge}</span>
+                        </div>
+                        <p>${k.message}</p>
+                        <small style="color:var(--text-secondary); display:block; margin-top:4px;"><i class="fa-solid fa-heart icon-red"></i> Awarded: <strong>+${k.points} Points</strong></small>
+                    </div>
+                `;
+            });
+        }
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// 5. Timesheets & Projects Tab Render
+async function renderTimesheetsProjectsTab() {
+    const headcountTbody = document.getElementById("headcount-plans-table-body");
+    if (!headcountTbody) return;
+    headcountTbody.innerHTML = "";
+
+    try {
+        const hcRes = await fetch(`/api/headcount-plans?tenant_id=${db.activeTenant}`);
+        const plans = await hcRes.json();
+
+        plans.forEach(p => {
+            headcountTbody.innerHTML += `
+                <tr>
+                    <td><strong>${p.department}</strong></td>
+                    <td>${p.target_count} Employees</td>
+                    <td>$${p.approved_budget.toLocaleString()}</td>
+                    <td>FY ${p.year}</td>
+                </tr>
+            `;
+        });
+
+        const prjRes = await fetch(`/api/projects?tenant_id=${db.activeTenant}`);
+        const projects = await prjRes.json();
+
+        const prjList = document.getElementById("projects-list-container");
+        const prjSelect = document.getElementById("ts-project-select");
+        if (prjList) {
+            prjList.innerHTML = "";
+            if (prjSelect) prjSelect.innerHTML = "";
+
+            projects.forEach(p => {
+                if (prjSelect) {
+                    const opt = document.createElement("option");
+                    opt.value = p.name;
+                    opt.textContent = p.name;
+                    prjSelect.appendChild(opt);
+                }
+
+                prjList.innerHTML += `
+                    <div class="project-item-card">
+                        <div>
+                            <strong>${p.name}</strong>
+                            <br><small style="color:var(--text-secondary);">Client: ${p.client_name || 'Internal'}</small>
+                        </div>
+                        <span class="badge badge-teal">$${p.budget.toLocaleString()}</span>
+                    </div>
+                `;
+            });
+        }
+
+        const tsRes = await fetch(`/api/timesheets?tenant_id=${db.activeTenant}`);
+        const timesheets = await tsRes.json();
+
+        const tsTbody = document.getElementById("timesheets-table-body");
+        if (tsTbody) {
+            tsTbody.innerHTML = "";
+            timesheets.forEach(ts => {
+                let statusClass = "badge-orange";
+                if (ts.status === "Approved") statusClass = "badge-teal";
+                if (ts.status === "Rejected") statusClass = "badge-red";
+
+                let actionHTML = "---";
+                if (ts.status === "Submitted" && db.activeRole !== "Employee") {
+                    actionHTML = `
+                        <button class="btn btn-secondary btn-small" onclick="handleTimesheetApproval('${ts.id}', 'Approved')"><i class="fa-solid fa-circle-check" style="color:teal;"></i></button>
+                        <button class="btn btn-secondary btn-small" onclick="handleTimesheetApproval('${ts.id}', 'Rejected')"><i class="fa-solid fa-circle-xmark" style="color:red;"></i></button>
+                    `;
+                }
+
+                tsTbody.innerHTML += `
+                    <tr>
+                        <td>${ts.id}</td>
+                        <td><strong>${ts.employee_name}</strong></td>
+                        <td>${ts.start_date} to ${ts.end_date}</td>
+                        <td><span class="badge ${statusClass}">${ts.status}</span></td>
+                        <td>${actionHTML}</td>
+                    </tr>
+                `;
+            });
+        }
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+window.handleTimesheetApproval = async function(id, status) {
+    try {
+        await fetch(`/api/timesheets/${id}/status`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status })
+        });
+        await logActivity(`Timesheet ${id} updated to status: ${status}`);
+        await refreshData();
+    } catch(e) {
+        console.error(e);
+    }
+};
+
+// 6. Exit Hub Tab Render
+async function renderExitHubTab() {
+    const tbody = document.getElementById("exits-table-body");
+    if (!tbody) return;
+    tbody.innerHTML = "";
+
+    try {
+        const exitsRes = await fetch(`/api/exits?tenant_id=${db.activeTenant}`);
+        const exits = await exitsRes.json();
+
+        exits.forEach(ex => {
+            let statusClass = "badge-orange";
+            if (ex.status === "Approved") statusClass = "badge-teal";
+            if (ex.status === "Rejected") statusClass = "badge-red";
+
+            let actionHTML = "---";
+            if (ex.status === "Pending" && db.activeRole !== "Employee") {
+                actionHTML = `
+                    <button class="btn btn-secondary btn-small" onclick="handleExitApproval('${ex.id}', 'Approved')"><i class="fa-solid fa-circle-check" style="color:teal;"></i> Approve</button>
+                    <button class="btn btn-secondary btn-small" onclick="handleExitApproval('${ex.id}', 'Rejected')"><i class="fa-solid fa-circle-xmark" style="color:red;"></i> Reject</button>
+                `;
+            }
+
+            const clearance = JSON.parse(ex.clearance_checklist || '{}');
+            const itCheck = clearance.IT ? '✅ IT' : '❌ IT';
+            const hrCheck = clearance.HR ? '✅ HR' : '❌ HR';
+            const finCheck = clearance.Finance ? '✅ Finance' : '❌ Finance';
+
+            tbody.innerHTML += `
+                <tr>
+                    <td><strong>${ex.employee_name}</strong></td>
+                    <td>${ex.exit_reason}</td>
+                    <td>${ex.requested_last_day}</td>
+                    <td>$${ex.gratuity.toLocaleString()}</td>
+                    <td><small style="color:var(--text-secondary); font-family:monospace;">${itCheck} | ${hrCheck} | ${finCheck}</small></td>
+                    <td><span class="badge ${statusClass}">${ex.status}</span></td>
+                    <td>${actionHTML}</td>
+                </tr>
+            `;
+        });
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+window.handleExitApproval = async function(id, status) {
+    try {
+        await fetch(`/api/exits/${id}/status`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status })
+        });
+        await logActivity(`Exit Request clearance workflow processed for ID: ${id}. Status set: ${status}`);
+        await refreshData();
+    } catch (e) {
+        console.error(e);
     }
 }
