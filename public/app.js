@@ -915,11 +915,13 @@ function setupEventListeners() {
         canvasEl.addEventListener("dragleave", () => {
             canvasEl.classList.remove("drag-over");
         });
-        
         canvasEl.addEventListener("drop", async (e) => {
             e.preventDefault();
             canvasEl.classList.remove("drag-over");
             
+            try {
+                const data = JSON.parse(e.dataTransfer.getData("text/plain"));
+                await addWorkflowNode(data.type, data.action);
             } catch (err) {
                 console.error(err);
             }
